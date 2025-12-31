@@ -1,22 +1,45 @@
 # Development files
+.git/
 .github/
 .vscode/
 .idea/
-*.log
 
 # Test files
+tests/
 test/
 *.test.js
+*.spec.js
 coverage/
 
-# Documentation (keep only essential)
-examples/
+# Documentation (already in README)
 docs/
-screenshots/
+examples/
 
-# Git files
-.git/
-.gitignore
+# Development config
+.eslintrc*
+.prettierrc*
+.editorconfig
+tsconfig.json
 
 # CI/CD
-*.yml
+.travis.yml
+.circleci/
+.gitlab-ci.yml
+
+# Misc
+*.md
+!README.md
+!CHANGELOG.md
+!LICENSE
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*

@@ -1,7 +1,20 @@
 {
   "name": "agentic-code-standards",
   "version": "1.0.0",
-  "description": "Production-ready coding standards for AI coding agents (Cursor, Windsurf, Antigravity, Copilot). WCAG 2.1+ accessibility, React, testing, security.",
+  "description": "Production-ready coding standards for AI coding agents. Works with Cursor, Windsurf, Antigravity, and GitHub Copilot.",
+  "main": "bin/init.js",
+  "bin": {
+    "agentic-code-standards": "./bin/init.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "node -e \"console.log('Publishing agentic-code-standards...')\"",
+    "postinstall": "echo 'Run: npx agentic-code-standards init'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitishkaf/agentic-code-standards.git"
+  },
   "keywords": [
     "ai",
     "coding-standards",
@@ -9,45 +22,35 @@
     "windsurf",
     "antigravity",
     "copilot",
-    "cline",
     "accessibility",
     "wcag",
-    "a11y",
     "react",
     "typescript",
-    "agentic",
     "code-quality",
-    "cursorrules"
+    "best-practices",
+    "a11y",
+    "linting",
+    "development",
+    "productivity",
+    "cursorrules",
+    "windsurfrules"
   ],
-  "homepage": "https://github.com/nitishkaf/agentic-code-standards",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nitishkaf/agentic-code-standards.git"
-  },
+  "author": "Nitish Kafle <kaflenit@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nitishkaf/agentic-code-standards/issues"
   },
-  "license": "MIT",
-  "author": "Nitish Kafle <kaflenit@gmail.com>",
-  "main": "lib/installer.js",
-  "bin": {
-    "agentic-code-standards": "bin/init.js"
-  },
-  "files": [
-    "bin/",
-    "lib/",
-    "templates/",
-    "standards/",
-    "README.md",
-    "LICENSE"
-  ],
-  "scripts": {
-    "test": "node scripts/test-templates.js",
-    "validate": "node scripts/validate-rules.js"
-  },
+  "homepage": "https://github.com/nitishkaf/agentic-code-standards#readme",
   "engines": {
     "node": ">=14.0.0"
   },
+  "files": [
+    "bin/",
+    "templates/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "dependencies": {},
   "devDependencies": {}
 }
