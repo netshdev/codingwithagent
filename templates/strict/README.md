@@ -28,7 +28,7 @@ Maximum code quality enforcement. All rules strictly applied.
 ## Quick Start
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select: 3. Strict
 ```
 

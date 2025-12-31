@@ -188,7 +188,7 @@ function showNextSteps(tool, profile) {
   console.log('');
   
   log('📚 Documentation:', 'blue');
-  log('  https://github.com/netshdev/agentic-code-standards');
+  log('  https://github.com/netshdev/codingwithagent');
   console.log('');
   
   if (tool === 'antigravity') {
@@ -243,7 +243,7 @@ if (args.length === 0 || args[0] === 'init') {
   process.exit(0);
 } else if (args[0] === '--help' || args[0] === '-h') {
   console.log('');
-  log('Usage: npx agentic-code-standards [command]', 'cyan');
+  log('Usage: npx codingwithagent [command]', 'cyan');
   console.log('');
   log('Commands:');
   log('  init              Initialize standards (default)');

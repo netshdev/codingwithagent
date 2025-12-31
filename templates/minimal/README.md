@@ -26,7 +26,7 @@ Essential coding standards for getting started with AI agents.
 ## Quick Start
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select: 1. Minimal
 ```
 

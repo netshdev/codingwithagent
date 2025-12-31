@@ -16,7 +16,7 @@ Maximum enforcement with zero tolerance for violations.
 ## Installation
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select tool: 3. Antigravity
 # Select profile: 3. Strict
 ```

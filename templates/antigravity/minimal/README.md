@@ -13,7 +13,7 @@ Essential rules for Antigravity AI agent in modular format.
 ## Installation
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select tool: 3. Antigravity
 # Select profile: 1. Minimal
 ```

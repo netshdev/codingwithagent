@@ -13,7 +13,7 @@ Deep accessibility focus with WCAG 2.1+ priority.
 ## Installation
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select tool: 3. Antigravity
 # Select profile: 4. Accessibility
 ```

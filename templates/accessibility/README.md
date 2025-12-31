@@ -28,7 +28,7 @@ WCAG 2.1+ focused development with accessibility as the top priority.
 ## Quick Start
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select: 4. Accessibility
 ```
 

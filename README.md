@@ -18,14 +18,14 @@ Stop fighting with inconsistent AI code output. Get enterprise-grade standards t
 # Using npx (no installation needed!)
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 ```
 
 # Or install globally
 
 ```
-npm i -g agentic-code-standards
-agentic-code-standards init
+npm i -g codingwithagent
+codingwithagent init
 ```
 
 ## Choose your setup:

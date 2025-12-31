@@ -28,7 +28,7 @@ Recommended baseline for production applications. Most popular choice.
 ## Quick Start
 
 ```bash
-npx agentic-code-standards init
+npx codingwithagent init
 # Select: 2. Standard
 ```
 

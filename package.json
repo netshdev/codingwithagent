@@ -1,19 +1,19 @@
 {
-  "name": "agentic-code-standards",
+  "name": "codingwithagent",
   "version": "1.0.0",
   "description": "Production-ready coding standards for AI coding agents. Works with Cursor, Windsurf, Antigravity, and GitHub Copilot.",
   "main": "bin/init.js",
   "bin": {
-    "agentic-code-standards": "./bin/init.js"
+    "codingwithagent": "./bin/init.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublishOnly": "node -e \"console.log('Publishing agentic-code-standards...')\"",
-    "postinstall": "echo 'Run: npx agentic-code-standards init'"
+    "prepublishOnly": "node -e \"console.log('Publishing codingwithagent...')\"",
+    "postinstall": "echo 'Run: npx codingwithagent init'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netshdev/agentic-code-standards.git"
+    "url": "git+https://github.com/netshdev/codingwithagent.git"
   },
   "keywords": [
     "ai",
@@ -38,9 +38,9 @@
   "author": "Nitish Kafle <kaflenit@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/netshdev/agentic-code-standards/issues"
+    "url": "https://github.com/netshdev/codingwithagent/issues"
   },
-  "homepage": "https://github.com/netshdev/agentic-code-standards#readme",
+  "homepage": "https://github.com/netshdev/codingwithagent#readme",
   "engines": {
     "node": ">=14.0.0"
   },
