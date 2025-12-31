@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Agentic Code Standards CLI
+ * CodingWithAgent CLI
  * Interactive installer for AI coding agent standards
  */
 
@@ -31,7 +31,7 @@ function log(message, color = 'reset') {
 
 function header() {
   console.log('');
-  log('🤖 Agentic Code Standards', 'cyan');
+  log('🤖 CodingWithAgent', 'cyan');
   log('━'.repeat(60), 'cyan');
   log('Production-ready standards for AI coding agents', 'bright');
   console.log('');

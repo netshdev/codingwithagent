@@ -1,4 +1,4 @@
-# Contributing to Agentic Code Standards
+# Contributing to CodingWithAgent
 
 ## Updating the Changelog
 
