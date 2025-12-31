@@ -1,0 +1,184 @@
+# Agentic Code Standards - Standard Profile
+
+# Version: 1.0.0
+
+# Profile: Recommended baseline for production code ⭐
+
+## Core Principles
+
+- Write accessible, maintainable, and secure code
+- Follow WCAG 2.1 Level AA standards
+- Use modern JavaScript/TypeScript patterns
+- Test thoroughly, document clearly
+
+## Accessibility Standards
+
+### Keyboard Navigation
+
+- All interactive elements must be keyboard accessible
+- Support Tab, Enter, Space, Escape keys
+- Visible focus indicators required
+- Never use `tabIndex > 0`
+
+### Screen Readers
+
+- Use semantic HTML (header, nav, main, footer, button)
+- Provide meaningful alt text for images
+- Use ARIA labels only when semantic HTML isn't enough
+- Test with screen readers (NVDA, JAWS, VoiceOver)
+
+### Visual Accessibility
+
+- Minimum contrast ratio: 4.5:1 for normal text, 3:1 for large text
+- Never use color alone to convey information
+- Support text resize up to 200%
+- Interactive elements minimum size: 24x24 pixels
+
+### Forms
+
+- All form fields must have associated labels
+- Provide clear error messages
+- Indicate required fields
+- Support keyboard navigation throughout
+
+## React & Components
+
+### Component Structure
+
+- Use functional components with hooks (not class components)
+- Destructure props at function signature: `const Component = ({prop1, prop2}) => {}`
+- Keep components under 200 lines - refactor if longer
+- One component per file (except small helper components)
+
+### Props & State
+
+- Define PropTypes for all components
+- Mark required props with `.isRequired`
+- Use TypeScript for type safety
+- Local state for UI only, Redux/context for shared data
+- Avoid prop drilling beyond 3 levels
+
+### Hooks Best Practices
+
+- `useState`: UI-only state (modals, toggles)
+- `useEffect`: Side effects, subscriptions, API calls
+  - Always specify dependencies array
+  - Return cleanup functions for subscriptions
+- `useMemo`: Expensive calculations only
+- `useCallback`: Prevent unnecessary re-renders
+- `useRef`: DOM access, mutable values that don't trigger re-renders
+
+### JSX Standards
+
+- No anonymous functions in render: `onClick={handleClick}` not `onClick={() => handleClick()}`
+- Use fragments `<></>` instead of unnecessary divs
+- Keys from data, not array index: `key={item.id}` not `key={index}`
+- Conditional rendering with boolean values only
+- Extract complex JSX to separate components
+
+## Code Quality
+
+### JavaScript/TypeScript
+
+- Use TypeScript for type safety
+- Prefer `const` over `let`, never use `var`
+- Use arrow functions for callbacks
+- Destructure objects and arrays
+- Use template literals for string interpolation
+- Async/await instead of promise chains
+
+### Naming Conventions
+
+- Variables & functions: `camelCase` (getUserData)
+- Components: `PascalCase` (UserProfile)
+- Constants: `UPPER_SNAKE_CASE` (MAX_RETRIES)
+- Files: `kebab-case` (user-profile.jsx)
+- Be descriptive: `isUserAuthenticated` not `isAuth`
+
+### Functions
+
+- Pure functions when possible (no side effects)
+- Maximum function length: 50 lines
+- Single responsibility principle
+- Return early to reduce nesting
+- Use meaningful parameter names
+
+### Prohibited Patterns
+
+- No `console.log` in production code
+- No `window` object access (use approved utilities)
+- No `eslint-disable` without team approval
+- No direct DOM manipulation (use React refs if needed)
+- No inline styles (use CSS/styled-components)
+
+## Testing Standards
+
+### Coverage Requirements
+
+- Aim for 80%+ coverage on new code
+- All new features must have tests
+- Test user behavior, not implementation
+- Use descriptive test names
+
+### Testing Best Practices
+
+- Shallow render preferred (use mount only for hooks)
+- Mock external dependencies (APIs, Redux, third-party libs)
+- Clean up mocks with `afterEach(() => jest.clearAllMocks())`
+- Avoid snapshots (explicit assertions preferred)
+- Test accessibility (keyboard nav, ARIA labels)
+
+## Security
+
+### Data Protection
+
+- Never commit secrets, API keys, or credentials
+- Use environment variables for configuration
+- Validate all user inputs
+- Sanitize data before rendering
+- Follow PII/PCI data handling guidelines
+
+### Dependencies
+
+- Keep dependencies up to date
+- Review security advisories regularly
+- Audit third-party packages before use
+- Minimize dependency count
+
+## Performance
+
+### Optimization
+
+- Code splitting for large bundles
+- Lazy load routes and components
+- Memoize expensive calculations with `useMemo`
+- Prevent unnecessary re-renders with `React.memo` and `useCallback`
+- Optimize images (WebP, proper sizing)
+
+### Best Practices
+
+- Avoid large component trees
+- Debounce expensive operations
+- Virtualize long lists
+- Monitor bundle size
+
+## Pull Request Standards
+
+### Before Submitting
+
+- All tests pass locally
+- No linting errors
+- Code coverage maintained or increased
+- CHANGELOG.md updated
+- Self-review completed
+
+### PR Description
+
+- Clear title describing the change
+- Reference related issues
+- Include screenshots for UI changes
+- List testing steps
+
+---
+
+Full documentation: https://github.com/nitishkaf/agentic-code-standards

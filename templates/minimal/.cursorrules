@@ -1,0 +1,48 @@
+# Agentic Code Standards - Minimal Profile
+
+# Version: 1.0.0
+
+# Profile: Essential rules only - great for getting started
+
+## Core Principles
+
+- Write clean, readable code
+- Follow basic accessibility guidelines
+- Use modern JavaScript/TypeScript patterns
+
+## Accessibility Basics
+
+- All interactive elements must be keyboard accessible (Tab, Enter, Space)
+- Provide alt text for images that convey information
+- Use semantic HTML elements (button, nav, main, header, footer)
+- Minimum color contrast: 4.5:1 for normal text
+
+## Code Quality
+
+- Use descriptive variable and function names
+- Prefer `const` over `let`, never use `var`
+- Keep functions small and focused (under 50 lines)
+- Remove `console.log` statements before committing
+
+## React Essentials
+
+- Use functional components with hooks
+- Destructure props: `const Component = ({prop1, prop2}) => {}`
+- Extract reusable logic into custom hooks
+- Keep components under 200 lines
+
+## Testing
+
+- Write tests for critical functionality
+- Test user behavior, not implementation details
+- Mock external dependencies
+
+## Security
+
+- Never commit API keys or secrets
+- Validate user inputs
+- Use environment variables for configuration
+
+---
+
+Learn more: https://github.com/nitishkaf/agentic-code-standards

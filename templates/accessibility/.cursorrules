@@ -1,0 +1,342 @@
+# Agentic Code Standards - Accessibility-Focused Profile
+
+# Version: 1.0.0
+
+# Profile: WCAG 2.1+ priority - accessibility first
+
+## Mission
+
+Every user, regardless of ability, deserves equal access to your application. This profile prioritizes accessibility above all else while maintaining code quality.
+
+## WCAG 2.1 Level AA Compliance (Minimum)
+
+### Perceivable - Everyone Can "See" This
+
+#### Text Alternatives
+
+- ALL images MUST have alt text (or alt="" if decorative)
+- Complex images (charts, diagrams) MUST have detailed descriptions
+- Icons with meaning MUST have accessible labels
+- Decorative images MUST have empty alt attributes
+
+#### Multimedia
+
+- ALL videos MUST have captions
+- ALL audio content MUST have transcripts
+- Captions MUST be accurate and synchronized
+- Audio descriptions MUST be provided for visual-only content
+
+#### Adaptable Content
+
+- Use semantic HTML (nav, main, header, footer, article, section)
+- Proper heading hierarchy (h1 → h2 → h3, no skipping)
+- Meaningful landmarks for screen reader navigation
+- Reading order MUST match visual order
+- Content MUST be understandable when CSS is disabled
+
+#### Distinguishable
+
+- **Color Contrast Requirements:**
+  - Normal text: 4.5:1 minimum (7:1 for AAA)
+  - Large text (18pt+ or 14pt+ bold): 3:1 minimum
+  - UI components and graphics: 3:1 minimum
+  - Use Color Contrast Analyzer tool
+- NEVER use color alone to convey information
+- Add patterns, icons, or text in addition to color
+- Audio MUST have option to pause/stop
+- No auto-playing audio >3 seconds
+
+### Operable - Everyone Can Use This
+
+#### Keyboard Accessible
+
+- ALL functionality MUST work with keyboard only
+- Visible focus indicators REQUIRED (2px outline minimum)
+- Focus order MUST be logical and intuitive
+- NO keyboard traps (user can always escape)
+- NEVER use `tabIndex > 0`
+- Support standard keys: Tab, Enter, Space, Escape, Arrow keys
+
+#### Enough Time
+
+- NO time limits unless:
+  - User can turn off the limit
+  - User can adjust limit to 10x default
+  - User is warned and given 20 seconds to extend
+- Provide pause/stop for moving content
+- Auto-updates MUST have controls
+
+#### Seizures and Physical Reactions
+
+- NOTHING flashes more than 3 times per second
+- Avoid large flashing areas
+- Provide warnings for flashing content
+- Animation MUST respect `prefers-reduced-motion`
+
+#### Navigable
+
+- Skip navigation links for keyboard users
+- Descriptive page titles
+- Meaningful link text (avoid "click here", "read more")
+- Multiple ways to find pages (search, sitemap, navigation)
+- Clear focus indicators
+- Breadcrumbs for complex navigation
+
+### Understandable - Everyone Can Comprehend This
+
+#### Readable
+
+- Set language of page: `<html lang="en">`
+- Set language of parts: `<span lang="es">Hola</span>`
+- Use plain language (8th grade reading level or below)
+- Define unusual words and abbreviations
+- Expansion available for abbreviations
+
+#### Predictable
+
+- Consistent navigation across pages
+- Consistent identification (icons, buttons)
+- NO automatic context changes on focus
+- NO automatic context changes on input (without warning)
+- Forms submit ONLY on explicit action
+
+#### Input Assistance
+
+- Labels for ALL form inputs
+- Clear error messages with suggestions
+- Error prevention for legal/financial/data transactions
+- Confirmation pages for submissions
+- Ability to review and correct before final submission
+
+### Robust - All Devices Can Use This
+
+#### Compatible
+
+- Valid HTML (pass W3C validator)
+- Proper ARIA attributes when needed
+- Name, role, value for all UI components
+- Status messages programmatically determinable
+- Works with assistive technologies
+- Test with NVDA, JAWS, VoiceOver, TalkBack
+
+## ARIA - Use Carefully
+
+### When to Use ARIA
+
+- Only when semantic HTML isn't sufficient
+- Custom widgets (tabs, accordions, modals)
+- Live regions for dynamic content
+- Relationship indicators
+
+### ARIA Rules
+
+1. First Rule of ARIA: Don't use ARIA (use semantic HTML first)
+2. Never change semantic meaning
+3. All interactive ARIA controls must be keyboard accessible
+4. Don't hide visible and actionable elements from screen readers
+5. All interactive elements must have an accessible name
+
+### Common ARIA Patterns
+
+- `role="button"` - Only if you can't use `<button>`
+- `aria-label` - Provide name when visual label isn't present
+- `aria-labelledby` - Associate existing label
+- `aria-describedby` - Additional description
+- `aria-live` - Announce dynamic content changes
+- `aria-expanded` - State of collapsible content
+- `aria-hidden="true"` - Hide decorative elements
+
+## Forms Accessibility
+
+### Form Field Requirements
+
+- ALL inputs MUST have associated `<label>` elements
+- Use `<label for="inputId">` or wrap input
+- Required fields MUST be indicated (not just with color/asterisk)
+- Error messages MUST be programmatically associated
+- Validation MUST happen on blur or submit, not on input
+
+### Form Patterns
+
+```javascript
+// Good: Associated label
+<label htmlFor="email">Email Address *</label>
+<input id="email" type="email" required aria-describedby="email-help" />
+<small id="email-help">We'll never share your email</small>
+
+// Good: Error handling
+<input
+  id="email"
+  type="email"
+  aria-invalid={hasError}
+  aria-describedby="email-error"
+/>
+{hasError && <p id="email-error" role="alert">Please enter a valid email</p>}
+```
+
+### Form Validation
+
+- Inline validation on blur
+- Clear error messages with solutions
+- Error summary at top of form
+- Focus management to first error
+- Success confirmation
+
+## React Accessibility
+
+### Component Requirements
+
+- Semantic HTML elements preferred over divs
+- Button elements for actions, links for navigation
+- Proper heading hierarchy maintained
+- Focus management in modals and dynamic content
+- Announce dynamic content with aria-live
+
+### Focus Management
+
+```javascript
+// Good: Focus management in modal
+useEffect(() => {
+  if (isOpen) {
+    modalRef.current?.focus();
+  }
+}, [isOpen]);
+
+// Good: Trap focus in modal
+const handleKeyDown = (e) => {
+  if (e.key === "Escape") closeModal();
+  if (e.key === "Tab") trapFocus(e);
+};
+```
+
+### Live Regions
+
+```javascript
+// Good: Announce loading state
+<div role="status" aria-live="polite" aria-atomic="true">
+  {isLoading ? "Loading..." : `${results.length} results found`}
+</div>
+```
+
+## Testing Requirements
+
+### Automated Testing
+
+- axe-core or jest-axe in unit tests
+- Lighthouse accessibility audit (score 100)
+- pa11y or similar in CI/CD
+- ESLint jsx-a11y plugin enabled
+
+### Manual Testing
+
+1. Keyboard navigation (Tab, Enter, Space, Escape)
+2. Screen reader testing:
+   - NVDA (Windows - free)
+   - JAWS (Windows - paid)
+   - VoiceOver (Mac/iOS - built-in)
+   - TalkBack (Android - built-in)
+3. Color contrast analyzer
+4. Zoom to 200% (text must remain readable)
+5. Browser with CSS disabled
+6. prefers-reduced-motion testing
+
+### Testing Checklist
+
+- [ ] All functionality keyboard accessible
+- [ ] Visible focus indicators
+- [ ] Logical focus order
+- [ ] Screen reader announces content correctly
+- [ ] Color contrast passes
+- [ ] Alt text for images
+- [ ] Form labels associated
+- [ ] Error messages clear
+- [ ] No automatic timeouts
+- [ ] No flashing content
+- [ ] Semantic HTML used
+- [ ] Zoom to 200% works
+
+## Code Examples
+
+### Accessible Button
+
+```javascript
+// Good: Semantic button
+<button onClick={handleClick} aria-pressed={isPressed}>
+  Toggle {isPressed ? 'On' : 'Off'}
+</button>
+
+// Bad: Div as button
+<div onClick={handleClick}>Click me</div>
+```
+
+### Accessible Modal
+
+```javascript
+const Modal = ({ isOpen, onClose, children }) => {
+  const modalRef = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      modalRef.current?.focus();
+    }
+  }, [isOpen]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      ref={modalRef}
+      tabIndex={-1}
+      onKeyDown={(e) => e.key === "Escape" && onClose()}
+    >
+      <h2 id="modal-title">Modal Title</h2>
+      {children}
+      <button onClick={onClose}>Close</button>
+    </div>
+  );
+};
+```
+
+### Accessible Navigation
+
+```javascript
+<nav aria-label="Main navigation">
+  <ul>
+    <li>
+      <a href="/" aria-current={isHome && "page"}>
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="/about">About</a>
+    </li>
+    <li>
+      <a href="/contact">Contact</a>
+    </li>
+  </ul>
+</nav>
+```
+
+## Resources
+
+### Guidelines
+
+- WCAG 2.1: https://www.w3.org/WAI/WCAG21/quickref/
+- ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/
+- WebAIM: https://webaim.org/
+
+### Testing Tools
+
+- axe DevTools: https://www.deque.com/axe/devtools/
+- WAVE: https://wave.webaim.org/
+- Color Contrast Analyzer: https://www.tpgi.com/color-contrast-checker/
+
+### Screen Readers
+
+- NVDA (free): https://www.nvaccess.org/
+- VoiceOver: Built into Mac/iOS
+- TalkBack: Built into Android
+
+Accessibility is not optional.
+Full documentation: https://github.com/nitishkaf/agentic-code-standards

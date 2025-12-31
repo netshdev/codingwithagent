@@ -1,0 +1,227 @@
+# Agentic Code Standards - Strict Profile
+
+# Version: 1.0.0
+
+# Profile: Maximum code quality - all rules enforced
+
+## Core Principles
+
+- Zero tolerance for accessibility violations
+- Strict type safety with TypeScript
+- 100% test coverage for critical paths
+- Security-first development
+- Performance-optimized by default
+
+## Accessibility - WCAG 2.1 Level AA (Strict Enforcement)
+
+### Mandatory Requirements
+
+- ALL interactive elements keyboard accessible (no exceptions)
+- ALL images have meaningful alt text (or alt="" if decorative)
+- ALL form fields have associated labels
+- ALL color contrasts meet 4.5:1 ratio (7:1 for AAA when possible)
+- ALL custom components have proper ARIA attributes
+- ALL pages tested with screen readers before PR approval
+
+### Testing Requirements
+
+- Automated accessibility tests required (axe-core, jest-axe)
+- Manual keyboard navigation testing mandatory
+- Screen reader testing required for new features
+- Color contrast analyzer must pass all checks
+
+### Prohibited
+
+- NEVER use `tabIndex > 0`
+- NEVER use color alone to convey information
+- NEVER use `role="presentation"` on interactive elements
+- NEVER skip heading levels (h1 → h3)
+- NEVER use `aria-label` when semantic HTML suffices
+
+## React & Components (Strict)
+
+### Component Requirements
+
+- TypeScript REQUIRED for all components
+- PropTypes AND TypeScript interfaces required
+- All props must be typed (no `any` type)
+- All components under 150 lines (no exceptions)
+- JSDoc comments for all exported components
+- Performance budget: <100ms render time
+
+### Hooks - Strict Rules
+
+- `useEffect` dependencies MUST be complete (exhaustive-deps enforced)
+- Custom hooks MUST start with "use" prefix
+- No hooks in loops, conditions, or nested functions
+- Cleanup functions REQUIRED for all subscriptions
+- `useCallback` required for all callback props
+- `useMemo` required for objects/arrays passed as props
+
+### JSX - Zero Tolerance
+
+- NO anonymous functions in JSX (all must be declared)
+- NO inline styles (styled-components or CSS modules only)
+- NO array index as key (data-based keys only)
+- NO non-boolean conditional rendering
+- NO nested ternaries (extract to variables or functions)
+
+## Code Quality (Maximum Enforcement)
+
+### TypeScript
+
+- Strict mode enabled in tsconfig.json
+- NO `any` type (use `unknown` if needed)
+- NO `@ts-ignore` without PR approval
+- NO implicit returns
+- ALL functions have explicit return types
+
+### Code Metrics
+
+- Maximum function length: 40 lines
+- Maximum file length: 300 lines
+- Maximum cyclomatic complexity: 10
+- Maximum function parameters: 4
+- Minimum test coverage: 90%
+
+### Naming (Strict)
+
+- Variables: `camelCase`, descriptive (min 3 chars, max 30 chars)
+- Functions: `camelCase`, verb-based (`getUserData`, not `data`)
+- Components: `PascalCase`, noun-based (`UserProfile`, not `Profile`)
+- Constants: `UPPER_SNAKE_CASE`
+- Boolean variables: `is`, `has`, `should` prefix (`isLoading`, `hasError`)
+- Event handlers: `handle` prefix (`handleClick`, not `onClick`)
+
+### Prohibited Patterns (Zero Tolerance)
+
+- NO `console.log`, `console.warn`, `console.error` (use logging utility)
+- NO `debugger` statements
+- NO `var` declarations
+- NO `==` or `!=` (use `===` and `!==`)
+- NO `eval()` or `Function()` constructor
+- NO `with` statements
+- NO `for...in` loops (use `Object.keys()`, `Object.entries()`)
+- NO mutations of props or state
+- NO `window` or `document` access (use approved utilities)
+- NO `Date()` constructor (use moment or date-fns)
+
+## Testing (Strict Requirements)
+
+### Coverage Requirements
+
+- Overall coverage: 90% minimum
+- Statement coverage: 90%
+- Branch coverage: 85%
+- Function coverage: 90%
+- Line coverage: 90%
+
+### Testing Standards
+
+- ALL new features MUST have tests before PR approval
+- ALL bug fixes MUST have regression tests
+- ALL components MUST have unit tests
+- ALL custom hooks MUST be tested with React Testing Library
+- ALL user interactions MUST be tested
+- ALL error states MUST be tested
+- ALL accessibility features MUST be tested
+
+### Test Quality
+
+- NO snapshot tests (explicit assertions only)
+- NO `test.skip` or `test.only` in committed code
+- NO flaky tests (must pass 100% of the time)
+- Test names MUST be descriptive: "should disable submit button when form is invalid"
+- Mock all external dependencies
+- All mocks MUST be cleaned up with `afterEach`
+
+## Security (Maximum)
+
+### Mandatory Security Practices
+
+- ALL user inputs MUST be validated
+- ALL data MUST be sanitized before rendering
+- ALL API responses MUST be validated with schemas
+- ALL environment variables MUST be documented
+- ALL dependencies MUST pass security audit
+- ALL third-party scripts MUST be reviewed
+
+### Prohibited Security Risks
+
+- NO `dangerouslySetInnerHTML` without sanitization
+- NO `eval()` or dynamic code execution
+- NO inline event handlers in HTML
+- NO unvalidated redirects
+- NO sensitive data in localStorage (use secure alternatives)
+- NO API keys in code (environment variables only)
+
+### Data Protection
+
+- PII data MUST be masked in logs
+- Credit cards MUST show only last 4 digits
+- Passwords MUST never be logged or stored in plain text
+- Session tokens MUST use httpOnly cookies
+
+## Performance (Strict Optimization)
+
+### Performance Budgets
+
+- Initial bundle size: <200KB gzipped
+- Time to Interactive: <3s on 3G
+- Lighthouse performance score: >90
+- Largest Contentful Paint: <2.5s
+- First Input Delay: <100ms
+
+### Optimization Requirements
+
+- Code splitting REQUIRED for routes
+- Lazy loading REQUIRED for images and heavy components
+- Tree shaking REQUIRED (no unused exports)
+- Bundle analysis REQUIRED before each release
+- Image optimization REQUIRED (WebP, proper sizing, lazy loading)
+- List virtualization REQUIRED for >50 items
+
+## Pull Request (Strict Process)
+
+### Pre-PR Requirements
+
+- ALL tests pass (no exceptions)
+- NO linting errors or warnings
+- Coverage increased or maintained at 90%+
+- Bundle size within budget
+- Performance tests pass
+- Security scan passes
+- Accessibility audit passes
+- Self-review completed with checklist
+
+### PR Content
+
+- Detailed description with screenshots/videos
+- Before/after comparisons for UI changes
+- Testing instructions included
+- Performance impact documented
+- Security considerations noted
+- Breaking changes clearly marked
+
+### Review Requirements
+
+- Minimum 2 approvals required
+- Architecture review for >500 lines changed
+- Security review for auth/payment changes
+- Accessibility review for UI changes
+- Performance review for optimization PRs
+
+## Documentation
+
+### Required Documentation
+
+- JSDoc for all exported functions and components
+- README updates for new features
+- CHANGELOG entry for all changes
+- Migration guide for breaking changes
+- Architecture decision records for major changes
+
+---
+
+This is the strictest profile. Only use if your team is committed to maximum quality.
+Full documentation: https://github.com/nitishkaf/agentic-code-standards
