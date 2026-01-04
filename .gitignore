@@ -35,11 +35,6 @@ tmp/
 temp/
 *.tmp
 
-# Package manager files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
 
 # AI coding agent files
 .agent/
