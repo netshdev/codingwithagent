@@ -39,3 +39,10 @@ temp/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+
+# AI coding agent files
+.agent/
+.cursorrules
+.windsurfrules
+.github/copilot-instructions.md

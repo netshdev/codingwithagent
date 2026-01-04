@@ -105,6 +105,17 @@ Depending on the profile, your rules will cover:
 - **🧠 Anti-Hallucinations**: Instructions to prevent AI from inventing libraries or APIs.
 - **📁 File Structure**: component/container architecture, proper folder organization.
 
+## ❓ Troubleshooting
+
+### Error: "InvalidStateError: Failed to register a ServiceWorker"
+
+If you encounter this error when opening the generated rule files in your editor (especially VS Code or strict environments), it is a known issue with the editor's Markdown previewer in restricted modes.
+
+**Solution:**
+1. Right-click the file in your explorer.
+2. Select **"Open With..."** -> **"Text Editor"** (or similar).
+3. The file content is safe standard Markdown. The error is purely a visual bug in the previewer.
+
 ## 🤝 Contributing
 
 We welcome community contributions to improve these standards!

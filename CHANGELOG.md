@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2026-01-03
+
+### Fixed
+
+- **Troubleshooting**: Added documentation for `InvalidStateError` related to restricted webview environments in VS Code.
+- **Ignore Rules**: Updated `.gitignore` to include `.agent`, `.cursorrules`, `.windsurfrules`, and `.github/copilot-instructions.md`.
+
 ## [1.1.0] - 2025-12-31
 
 ### Changed
